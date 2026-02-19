@@ -1,0 +1,24 @@
+services:
+  workshop:
+    image: ghcr.io/therobocademy/ros2_nvidia_workshop:latest
+    container_name: isaac-sim
+    entrypoint: bash
+    command: -lc "sleep infinity"
+    network_mode: host
+    gpus: all
+    user: "1234:1234"
+    stdin_open: true
+    tty: true
+    environment:
+      - ACCEPT_EULA=Y
+      - PRIVACY_CONSENT=Y
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - ${HOME}/.Xauthority:/isaac-sim/.Xauthority
+      - ${HOME}/docker/isaac-sim/cache/main:/isaac-sim/.cache:rw
+      - ${HOME}/docker/isaac-sim/cache/computecache:/isaac-sim/.nv/ComputeCache:rw
+      - ${HOME}/docker/isaac-sim/logs:/isaac-sim/.nvidia-omniverse/logs:rw
+      - ${HOME}/docker/isaac-sim/config:/isaac-sim/.nvidia-omniverse/config:rw
+      - ${HOME}/docker/isaac-sim/data:/isaac-sim/.local/share/ov/data:rw
+      - ${HOME}/docker/isaac-sim/pkg:/isaac-sim/.local/share/ov/pkg:rw
+      - .:/workspaces/ros2_nvidia_isaac_bootcamp:cached
