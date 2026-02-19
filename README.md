@@ -85,7 +85,7 @@ Windows 10 video:
 ## Download Workshop Docker Image
 
 ```bash
-docker pull ghcr.io/therobocademy/ros2_nvidia_workshop:latest
+docker pull therobocademy/ros2_nvidia_workshop:latest
 ```
 
 ## Start Docker Compose (GUI Enabled)

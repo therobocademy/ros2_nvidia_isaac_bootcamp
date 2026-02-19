@@ -15,4 +15,4 @@ docker run --name isaac-sim --entrypoint bash -it --gpus all -e "ACCEPT_EULA=Y" 
    -v ~/docker/isaac-sim/data:/isaac-sim/.local/share/ov/data:rw \
    -v ~/docker/isaac-sim/pkg:/isaac-sim/.local/share/ov/pkg:rw \
    -u 1234:1234 \
-   ghcr.io/therobocademy/ros2_nvidia_workshop:latest
+   therobocademy/ros2_nvidia_workshop:latest

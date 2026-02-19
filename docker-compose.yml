@@ -1,6 +1,6 @@
 services:
   workshop:
-    image: ghcr.io/therobocademy/ros2_nvidia_workshop:latest
+    image: therobocademy/ros2_nvidia_workshop:latest
     build:
       context: .
       dockerfile: Dockerfile
