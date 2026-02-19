@@ -2,9 +2,10 @@
   "name": "ROS2 NVIDIA Workshop",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "workshop",
-  "workspaceFolder": "/isaac-sim",
+  "workspaceFolder": "/workspaces/ros2_nvidia_isaac_bootcamp",
   "shutdownAction": "stopCompose",
   "overrideCommand": false,
+  "initializeCommand": "bash -lc 'xhost +local:docker >/dev/null 2>&1 || true'",
   "remoteUser": "isaac-sim",
   "customizations": {
     "vscode": {

@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
+xhost +
+
 docker run --name isaac-sim --entrypoint bash -it --gpus all -e "ACCEPT_EULA=Y" --rm --network=host \
    -e "PRIVACY_CONSENT=Y" \
    -v $HOME/.Xauthority:/isaac-sim/.Xauthority \
+   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
    -e DISPLAY \
+   -e XAUTHORITY=/isaac-sim/.Xauthority \
    -v ~/docker/isaac-sim/cache/main:/isaac-sim/.cache:rw \
    -v ~/docker/isaac-sim/cache/computecache:/isaac-sim/.nv/ComputeCache:rw \
    -v ~/docker/isaac-sim/logs:/isaac-sim/.nvidia-omniverse/logs:rw \

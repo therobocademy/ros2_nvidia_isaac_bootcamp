@@ -80,6 +80,7 @@ docker pull ghcr.io/therobocademy/ros2_nvidia_workshop:latest
 Start the workshop container:
 
 ```bash
+xhost +local:docker
 docker compose up -d
 ```
 
@@ -105,3 +106,13 @@ Use it in VS Code:
 1. Install the `Dev Containers` extension.
 2. Open this repository in VS Code.
 3. Run `Dev Containers: Reopen in Container`.
+
+For Linux GUI access, this Dev Container runs:
+
+```bash
+xhost +local:docker
+```
+
+on startup (`initializeCommand`) and mounts both:
+- `${HOME}/.Xauthority`
+- `/tmp/.X11-unix`

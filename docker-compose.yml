@@ -13,8 +13,10 @@ services:
       - ACCEPT_EULA=Y
       - PRIVACY_CONSENT=Y
       - DISPLAY=${DISPLAY}
+      - XAUTHORITY=/isaac-sim/.Xauthority
     volumes:
       - ${HOME}/.Xauthority:/isaac-sim/.Xauthority
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ${HOME}/docker/isaac-sim/cache/main:/isaac-sim/.cache:rw
       - ${HOME}/docker/isaac-sim/cache/computecache:/isaac-sim/.nv/ComputeCache:rw
       - ${HOME}/docker/isaac-sim/logs:/isaac-sim/.nvidia-omniverse/logs:rw
