@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-xhost +
+xhost +local:docker
 
 docker run --name isaac-sim --entrypoint bash -it --gpus all -e "ACCEPT_EULA=Y" --rm --network=host \
    -e "PRIVACY_CONSENT=Y" \

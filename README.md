@@ -88,6 +88,44 @@ Windows 10 video:
 docker pull ghcr.io/therobocademy/ros2_nvidia_workshop:latest
 ```
 
+## Start Docker Compose (GUI Enabled)
+
+The compose file is already configured for GUI forwarding with:
+- `DISPLAY`
+- `~/.Xauthority`
+- `/tmp/.X11-unix`
+
+### Ubuntu 22.04 / 24.04
+
+From your host terminal:
+
+```bash
+cd ros2_nvidia_isaac_bootcamp
+xhost +local:docker
+touch ~/.Xauthority
+docker compose up -d
+docker compose exec workshop bash
+```
+
+Then launch your GUI app inside the container (for example, `rviz2` or Isaac Sim command used in the workshop).
+
+### Windows 11 (WSL2 + WSLg)
+
+Run these commands inside your Ubuntu WSL terminal (not PowerShell):
+
+```bash
+cd ros2_nvidia_isaac_bootcamp
+xhost +local:docker
+touch ~/.Xauthority
+docker compose up -d
+docker compose exec workshop bash
+```
+
+Notes for Windows 11:
+- Start Docker Desktop before running `docker compose`.
+- Make sure WSL integration is enabled for your Ubuntu distro in Docker Desktop.
+- GUI windows appear through WSLg on Windows.
+
 
 ## Dev Container (VS Code)
 

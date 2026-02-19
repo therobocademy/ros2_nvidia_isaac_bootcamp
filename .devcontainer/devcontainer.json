@@ -5,7 +5,6 @@
   "workspaceFolder": "/home/isaac-sim/workspaces",
   "shutdownAction": "stopCompose",
   "overrideCommand": false,
-  "initializeCommand": "bash -lc 'xhost +local:docker >/dev/null 2>&1 || true'",
   "remoteUser": "isaac-sim",
   "customizations": {
     "vscode": {
