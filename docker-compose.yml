@@ -7,18 +7,26 @@ services:
     container_name: isaac-sim
     entrypoint: bash
     command: -lc "sleep infinity"
-    network_mode: host
+    # Host networking breaks GUI forwarding on Docker Desktop (Windows/macOS).
+    # Use bridge by default; override with DOCKER_NETWORK_MODE=host on Linux if needed.
+    network_mode: ${DOCKER_NETWORK_MODE:-bridge}
     gpus: all
-    user: "1234:1234"
+    # Let the image's default user be used (isaac-sim).
+    # Dev Containers can then remap UID/GID to the local Ubuntu user.
     stdin_open: true
     tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       - ACCEPT_EULA=Y
       - PRIVACY_CONSENT=Y
-      - DISPLAY=${DISPLAY}
-      - XAUTHORITY=/isaac-sim/.Xauthority
+      # Linux: export DISPLAY and run xhost +local:docker
+      # Windows/WSL: leave DISPLAY unset to use host.docker.internal:0.0 (VcXsrv/X410)
+      - DISPLAY=${DISPLAY:-host.docker.internal:0.0}
+      - QT_X11_NO_MITSHM=1
+      - LIBGL_ALWAYS_INDIRECT=0
     volumes:
-      - ${HOME}/.Xauthority:/isaac-sim/.Xauthority
+      # Linux X11 unix socket (harmless on WSL if present)
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ${HOME}/docker/isaac-sim/cache/main:/isaac-sim/.cache:rw
       - ${HOME}/docker/isaac-sim/cache/computecache:/isaac-sim/.nv/ComputeCache:rw

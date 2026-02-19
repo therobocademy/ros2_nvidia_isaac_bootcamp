@@ -4,7 +4,7 @@ This repository has docker compose files to get started with the bootcamp
 ## System Prerequisites
 
 For a local setup, use a machine with:
-- Ubuntu 22.04 or Ubuntu 24.04 (dual-boot is supported)
+- Ubuntu 22.04 or Ubuntu 24.04
 - NVIDIA RTX 3050 or better
 - More than 6 GB GPU VRAM
 
@@ -90,50 +90,43 @@ docker pull ghcr.io/therobocademy/ros2_nvidia_workshop:latest
 
 ## Start Docker Compose (GUI Enabled)
 
-The compose file is already configured for GUI forwarding with:
-- `DISPLAY`
-- `~/.Xauthority`
-- `/tmp/.X11-unix`
+The compose file supports Linux and Windows (WSL) GUI forwarding.
 
-### Ubuntu 22.04 / 24.04
+### Ubuntu 22.04 / 24.04 (X11)
 
 From your host terminal:
 
 ```bash
 cd ros2_nvidia_isaac_bootcamp
 xhost +local:docker
-touch ~/.Xauthority
-docker compose up -d
-docker compose exec workshop bash
+
+export DISPLAY=${DISPLAY:-:0}
+export DOCKER_NETWORK_MODE=host
+
+docker compose up workshop
+docker exec -it isaac-sim bash
+
 ```
 
-Then launch your GUI app inside the container (for example, `rviz2` or Isaac Sim command used in the workshop).
+### Windows 11/10 (WSL2 + Docker Desktop)
 
-### Windows 11 (WSL2 + WSLg)
-
-Run these commands inside your Ubuntu WSL terminal (not PowerShell):
+1. Start an X server on Windows (VcXsrv/X410) with access control disabled (or allow your WSL IP).
+2. Run these commands in Ubuntu WSL terminal:
 
 ```bash
 cd ros2_nvidia_isaac_bootcamp
-xhost +local:docker
-touch ~/.Xauthority
-docker compose up -d
-docker compose exec workshop bash
+
+unset DISPLAY
+unset DOCKER_NETWORK_MODE
+
+docker compose up workshop
+docker exec -it isaac-sim bash
 ```
 
-Notes for Windows 11:
-- Start Docker Desktop before running `docker compose`.
-- Make sure WSL integration is enabled for your Ubuntu distro in Docker Desktop.
-- GUI windows appear through WSLg on Windows.
+Notes for Windows:
+- Compose defaults `DISPLAY` to `host.docker.internal:0.0` when `DISPLAY` is unset.
+- Start Docker Desktop before `docker compose up`.
+- Keep WSL integration enabled for your Ubuntu distro.
 
+Then launch your GUI app inside the container (for example, `rviz2` or Isaac Sim command used in the workshop).
 
-## Dev Container (VS Code)
-
-This repo includes:
-- `docker-compose.yml`
-- `.devcontainer/devcontainer.json`
-
-Use it in VS Code:
-1. Install the `Dev Containers` extension.
-2. Open this repository in VS Code.
-3. Run `Dev Containers: Reopen in Container`.
