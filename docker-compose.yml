@@ -1,6 +1,9 @@
 services:
   workshop:
     image: ghcr.io/therobocademy/ros2_nvidia_workshop:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: isaac-sim
     entrypoint: bash
     command: -lc "sleep infinity"
