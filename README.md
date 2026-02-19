@@ -97,7 +97,10 @@ The compose file supports Linux and Windows (WSL) GUI forwarding.
 From your host terminal:
 
 ```bash
+git clone https://github.com/therobocademy/ros2_nvidia_isaac_bootcamp.git
+
 cd ros2_nvidia_isaac_bootcamp
+
 xhost +local:docker
 
 export DISPLAY=${DISPLAY:-:0}
@@ -114,6 +117,8 @@ docker exec -it isaac-sim bash
 2. Run these commands in Ubuntu WSL terminal:
 
 ```bash
+git clone https://github.com/therobocademy/ros2_nvidia_isaac_bootcamp.git
+
 cd ros2_nvidia_isaac_bootcamp
 
 unset DISPLAY
@@ -129,4 +134,3 @@ Notes for Windows:
 - Keep WSL integration enabled for your Ubuntu distro.
 
 Then launch your GUI app inside the container (for example, `rviz2` or Isaac Sim command used in the workshop).
-
