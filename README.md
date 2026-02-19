@@ -1,11 +1,24 @@
 # ros2_nvidia_isaac_bootcamp
 This repository has docker compose files to get started with the bootcamp
 
+## System Prerequisites
+
+For a local setup, use a machine with:
+- Ubuntu 22.04 or Ubuntu 24.04 (dual-boot is supported)
+- NVIDIA RTX 3050 or better
+- More than 6 GB GPU VRAM
+
+If you are using Windows or macOS and do not have a compatible local Linux + NVIDIA setup, you can use a cloud GPU service such as [vast.ai](https://vast.ai/).
+
 ## Docker Installation
+
+This section explains how to install Docker so you can run the bootcamp containers.
+For Ubuntu, a script is provided for automatic installation.
+For Windows, follow the WSL + Docker Desktop steps.
 
 ### Ubuntu 24.04 and 22.04
 
-Run the setup script:
+Run the setup script (automatic installation):
 
 ```bash
 wget https://raw.githubusercontent.com/therobocademy/ros2_nvidia_isaac_bootcamp/refs/heads/main/setup_docker_ubuntu.sh && chmod +x setup_docker_ubuntu.sh && sudo ./setup_docker_ubuntu.sh
