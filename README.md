@@ -2,6 +2,15 @@
 
 This repository has docker compose files to get started with the [bootcamp](https://robocademy.com/courses/robotics-ai-from-scratch-ros-2-nvidia-isaac-bootcamp-696f2d1461b5f31af9b9fd95)
 
+## Table of Contents
+
+- [System Prerequisites](#system-prerequisites)
+- [Optional: Native Install (Isaac Sim + ROS 2)](#optional-native-install-isaac-sim--ros-2)
+- [Docker Installation](#docker-installation)
+- [Vast.ai Setup (Ubuntu 22.04 Desktop VM with GPU)](#vastai-setup-ubuntu-2204-desktop-vm-with-gpu)
+- [Download Workshop Docker Image](#download-workshop-docker-image)
+- [Start Docker Compose (GUI Enabled)](#start-docker-compose-gui-enabled)
+
 ## System Prerequisites
 
 For a local setup, use a machine with:
@@ -10,6 +19,40 @@ For a local setup, use a machine with:
 - More than 6 GB GPU VRAM
 
 If you are using Windows or macOS and do not have a compatible local Linux + NVIDIA setup, you can use a cloud GPU service such as [vast.ai](https://vast.ai/).
+
+## Optional: Native Install (Isaac Sim + ROS 2)
+
+Use this section if you want to install Isaac Sim manually and install ROS 2 directly on your Ubuntu system (outside Docker).
+
+### Download Isaac Sim (Manual)
+
+Download Isaac Sim using this link:
+
+https://download.isaacsim.omniverse.nvidia.com/isaac-sim-standalone-5.1.0-linux-x86_64.zip
+
+After downloading, extract it:
+
+```bash
+unzip isaac-sim-standalone-5.1.0-linux-x86_64.zip
+```
+
+### Install ROS 2 with One-Line Script
+
+Repository:
+
+https://github.com/runtimerobotics/ros2_oneline_install
+
+Install ROS 2 Jazzy:
+
+```bash
+wget -c https://raw.githubusercontent.com/runtimerobotics/ros2_oneline_install/main/ros2_install_jazzy.sh && chmod +x ./ros2_install_jazzy.sh && ./ros2_install_jazzy.sh
+```
+
+Install ROS 2 Humble:
+
+```bash
+wget -c https://raw.githubusercontent.com/runtimerobotics/ros2_oneline_install/main/ros2_install_humble.sh && chmod +x ./ros2_install_humble.sh && ./ros2_install_humble.sh
+```
 
 ## Docker Installation
 
