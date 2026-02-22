@@ -7,7 +7,7 @@ This repository has docker compose files to get started with the [bootcamp](http
 - [System Prerequisites](#system-prerequisites)
 - [Optional: Native Install (Isaac Sim + ROS 2)](#optional-native-install-isaac-sim--ros-2)
 - [Docker Installation](#docker-installation)
-- [Vast.ai Setup (Ubuntu 22.04 Desktop VM with GPU)](#vastai-setup-ubuntu-2204-desktop-vm-with-gpu)
+- [Cloud Setup using Vast.ai (Ubuntu 22.04 Desktop VM with GPU)](#cloud-setup-using-vastai-ubuntu-2204-desktop-vm-with-gpu)
 - [Download Workshop Docker Image](#download-workshop-docker-image)
 - [Start Docker Compose (GUI Enabled)](#start-docker-compose-gui-enabled)
 
@@ -127,7 +127,7 @@ Windows 10 video:
   </a>
 </p>
 
-## Vast.ai Setup (Ubuntu 22.04 Desktop VM with GPU)
+## Cloud Setup using Vast.ai (Ubuntu 22.04 Desktop VM with GPU)
 
 If you do not have a compatible local Linux + NVIDIA GPU, you can rent a cloud GPU using [Vast.ai](https://vast.ai/) and use the pre-configured Ubuntu Desktop VM template (GUI + Docker already installed).
 
@@ -152,6 +152,7 @@ Sign up at Vast.ai and add credits.
 - Click your running instance
 - Click **Open**
 - This launches the Ubuntu Desktop in your browser (VNC/Web Desktop)
+- Login password is often `password`; check the template README to confirm the current credentials.
 
 ### Step 5: Verify GPU inside Desktop Terminal
 
@@ -182,6 +183,9 @@ The compose file supports Linux and Windows (WSL) GUI forwarding.
 From your host terminal:
 
 ```bash
+sudo apt update
+sudo apt install -y git
+
 git clone https://github.com/therobocademy/ros2_nvidia_isaac_bootcamp.git
 
 cd ros2_nvidia_isaac_bootcamp
@@ -201,6 +205,9 @@ docker exec -it isaac-sim bash
 Open Terminal inside the Vast.ai Ubuntu Desktop (in browser VNC), then run:
 
 ```bash
+sudo apt update
+sudo apt install -y git
+
 git clone https://github.com/therobocademy/ros2_nvidia_isaac_bootcamp.git
 
 cd ros2_nvidia_isaac_bootcamp
@@ -220,6 +227,9 @@ docker exec -it isaac-sim bash
 2. Run these commands in Ubuntu WSL terminal:
 
 ```bash
+sudo apt update
+sudo apt install -y git
+
 git clone https://github.com/therobocademy/ros2_nvidia_isaac_bootcamp.git
 
 cd ros2_nvidia_isaac_bootcamp
