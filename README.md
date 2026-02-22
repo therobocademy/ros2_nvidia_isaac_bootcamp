@@ -26,7 +26,7 @@ Use this section if you want to install Isaac Sim manually and install ROS 2 dir
 
 ### Download Isaac Sim (Manual)
 
-Download Isaac Sim using this link:
+Download Isaac Sim using this link: [Doc](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/installation/quick-install.html)
 
 https://download.isaacsim.omniverse.nvidia.com/isaac-sim-standalone-5.1.0-linux-x86_64.zip
 
