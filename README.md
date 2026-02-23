@@ -196,8 +196,11 @@ export DISPLAY=${DISPLAY:-:0}
 export DOCKER_NETWORK_MODE=host
 
 docker compose up workshop
-docker exec -it isaac-sim bash
+```
+In Terminal 2 (For taking a new terminal for Docker container)
 
+```
+docker exec -it isaac-sim bash
 ```
 
 ### Vast.ai Ubuntu Desktop VM (VNC Desktop)
@@ -218,6 +221,10 @@ export DISPLAY=${DISPLAY:-:0}
 export DOCKER_NETWORK_MODE=host
 
 docker compose up workshop
+```
+In Terminal 2 (For taking a new terminal for Docker container)
+
+```
 docker exec -it isaac-sim bash
 ```
 
