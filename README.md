@@ -195,6 +195,8 @@ xhost +local:docker
 export DISPLAY=${DISPLAY:-:0}
 export DOCKER_NETWORK_MODE=host
 
+mkdir -p ~/docker/isaac-sim/cache/{kit,ov,pip,glcache,computecache} ~/docker/isaac-sim/{logs,data,documents}
+
 docker compose up workshop
 ```
 In Terminal 2 (For taking a new terminal for Docker container)
@@ -220,6 +222,8 @@ xhost +local:docker
 export DISPLAY=${DISPLAY:-:0}
 export DOCKER_NETWORK_MODE=host
 
+mkdir -p ~/docker/isaac-sim/cache/{kit,ov,pip,glcache,computecache} ~/docker/isaac-sim/{logs,data,documents}
+
 docker compose up workshop
 ```
 In Terminal 2 (For taking a new terminal for Docker container)
@@ -244,6 +248,8 @@ cd ros2_nvidia_isaac_bootcamp
 unset DISPLAY
 unset DOCKER_NETWORK_MODE
 
+mkdir -p ~/docker/isaac-sim/cache/{kit,ov,pip,glcache,computecache} ~/docker/isaac-sim/{logs,data,documents}
+
 docker compose up workshop
 docker exec -it isaac-sim bash
 ```
@@ -254,3 +260,18 @@ Notes for Windows:
 - Keep WSL integration enabled for your Ubuntu distro.
 
 Then launch your GUI app inside the container (for example, `rviz2` or Isaac Sim command used in the workshop).
+
+## Possible Issues
+
+If you see:
+
+```text
+Failed to create texture cache in /isaac-sim/.cache/ov/texturecache
+Failed to create texture cache folder /isaac-sim/.cache/ov/texturecache
+```
+
+Run:
+
+```bash
+chmod -R 777 ~/docker/isaac-sim
+```
