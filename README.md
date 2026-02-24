@@ -129,7 +129,7 @@ Windows 10 video:
 
 ## Cloud Setup using Vast.ai (Ubuntu 22.04 Desktop VM with GPU)
 
-If you do not have a compatible local Linux + NVIDIA GPU, you can rent a cloud GPU using [Vast.ai](https://vast.ai/) and use the pre-configured Ubuntu Desktop VM template (GUI + Docker already installed).
+If you do not have a compatible local Linux + NVIDIA GPU, you can rent a cloud GPU using [Vast.ai](https://cloud.vast.ai/?ref_id=374137) and use the pre-configured Ubuntu Desktop VM template (GUI + Docker already installed).
 
 ### Step 1: Create a Vast.ai Account
 
