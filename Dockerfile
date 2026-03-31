@@ -191,5 +191,15 @@ RUN printf '%s\n' \
     | sudo tee -a /isaac-sim/.bashrc >/dev/null && \
     sudo chown isaac-sim:isaac-sim /isaac-sim/.bashrc
 
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    jq \
+    tar && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+USER isaac-sim
+
 # Default entrypoint to launch headless with streaming
 ENTRYPOINT ["/isaac-sim/runheadless.sh"]
