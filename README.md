@@ -10,6 +10,7 @@ This repository has docker compose files to get started with the [bootcamp](http
 - [Cloud Setup using Vast.ai (Ubuntu 22.04 Desktop VM with GPU)](#cloud-setup-using-vastai-ubuntu-2204-desktop-vm-with-gpu)
 - [Download Workshop Docker Image](#download-workshop-docker-image)
 - [Start Docker Compose (GUI Enabled)](#start-docker-compose-gui-enabled)
+- [Open in Dev Container (VS Code / Cursor)](#open-in-dev-container-vs-code--cursor)
 
 ## System Prerequisites
 
@@ -275,3 +276,55 @@ Run:
 ```bash
 chmod -R 777 ~/docker/isaac-sim
 ```
+## Open in Dev Container (VS Code / Cursor)
+
+This repository also includes a ready-to-use Dev Container at `.devcontainer/devcontainer.json`.
+It reuses the existing `docker-compose.yml` service, including:
+
+- NVIDIA GPU access
+- X11 GUI forwarding
+- Isaac Sim cache/data mounts
+- The repository mounted at `/workspaces/ros2_nvidia_isaac_bootcamp`
+
+### Linux Host (Ubuntu / Vast.ai Desktop)
+
+Before opening the Dev Container, allow local Docker containers to use your X server:
+
+```bash
+xhost +local:docker
+export DISPLAY=${DISPLAY:-:0}
+```
+
+Then open the folder in VS Code or Cursor and choose:
+
+- `Dev Containers: Reopen in Container`
+
+The Dev Container mounts your host X11 socket and `~/.Xauthority`, so GUI apps launched inside the container can open on your desktop.
+
+Start Isaac Sim in GUI mode from inside the container with:
+
+```bash
+./scripts/launch_isaac_sim.sh
+```
+
+### Windows with WSL2
+
+Start your Windows X server first (VcXsrv/X410), then from the WSL terminal set:
+
+```bash
+export DISPLAY=${DISPLAY:-host.docker.internal:0.0}
+```
+
+Then reopen the project in the Dev Container from VS Code / Cursor.
+
+If you want streaming or a no-display workflow instead of a desktop window, launch:
+
+```bash
+./scripts/launch_isaac_sim_headless.sh
+```
+
+### Notes
+
+- If GUI apps fail to open on Linux, run `xhost +local:docker` again on the host and reopen the container.
+- The Dev Container uses the same `workshop` service as Docker Compose, so command-line and editor workflows stay aligned.
+- Isaac Sim headless mode does not create a normal desktop window. Messages like `Cannot set window title without a default window` mean Kit started without a GUI window, which is expected for headless mode and a sign to use `./scripts/launch_isaac_sim.sh` if you wanted the desktop app.

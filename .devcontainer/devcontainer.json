@@ -1,0 +1,39 @@
+{
+  "name": "ROS 2 NVIDIA Isaac Bootcamp",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "workshop",
+  "runServices": [
+    "workshop"
+  ],
+  "workspaceFolder": "/home/isaac-sim/workspaces",
+  "shutdownAction": "stopCompose",
+  "overrideCommand": false,
+  "initializeCommand": "xhost +local:docker",
+  "remoteUser": "isaac-sim",
+  "containerUser": "isaac-sim",
+  "updateRemoteUserUID": true,
+  "mounts": [
+    "source=${localEnv:HOME}/.Xauthority,target=/isaac-sim/.Xauthority,type=bind,consistency=cached"
+  ],
+  "remoteEnv": {
+    "HOME": "/isaac-sim",
+    "XAUTHORITY": "/isaac-sim/.Xauthority"
+  },
+  "postStartCommand": "bash -lc 'mkdir -p \"${HOME:-/isaac-sim}/.cache\" \"${HOME:-/isaac-sim}/.config\"'",
+  "postAttachCommand": "bash -lc 'printf \"\\nIsaac Sim launch helpers:\\n  GUI:      ./scripts/launch_isaac_sim.sh\\n  Headless: ./scripts/launch_isaac_sim_headless.sh\\n\\nIf you see \\\"Cannot set window title without a default window\\\", you likely started headless mode while expecting a GUI window.\\n\\n\"'",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-python.python",
+        "ms-iot.vscode-ros",
+        "ms-vscode.cpptools"
+      ]
+    }
+  }
+}
