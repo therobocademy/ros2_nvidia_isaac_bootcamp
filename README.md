@@ -284,7 +284,7 @@ It reuses the existing `docker-compose.yml` service, including:
 - NVIDIA GPU access
 - X11 GUI forwarding
 - Isaac Sim cache/data mounts
-- The repository mounted at `/workspaces/ros2_nvidia_isaac_bootcamp`
+- The repository mounted at `/home/isaac-sim/workspaces`
 
 ### Linux Host (Ubuntu / Vast.ai Desktop)
 
